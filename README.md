@@ -1,4 +1,5 @@
-# Puppet Setup
+# This is old information. Shall update to Puppet 4.4
+#### Puppet Setup
 
 > This is to set up a machine on Red Hat Enterprise Linux 7.1
 
@@ -27,7 +28,7 @@ This installs the time management and starts it.
 
 ### Main Puppet install
 
-    sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm && sudo yum install -y puppet-server
+    sudo rpm -ivh sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm && sudo yum install -y puppet-server
 
 Get the repository for Puppet and install
 
