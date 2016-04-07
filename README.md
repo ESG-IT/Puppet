@@ -5,7 +5,7 @@
 ## Preparation for Install
 
 ### Run these commands from the Terminal
-``` sudo yum remove firewalld && sudo yum install iptables-services
+    sudo yum remove firewalld && sudo yum install iptables-services
   > This removes the default firewall
 
 ``` -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
