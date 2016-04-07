@@ -36,15 +36,26 @@ Get the repository for Puppet and install
 
 ### Run these commands from the Terminal
 
-    sudo nano /etc/puppet/puppet.conf
-
 Open the Puppet Configuration File
+
+    sudo nano /etc/puppet/puppet.conf
 
 In the [main] section, copy the follwing at the bottom
 
     dns_alt_names = puppet,puppet.esg.lan
 
-These are the names that the puppet clients will look for with DNS. 
+    Type CTRL + X
+
+These are the names that the puppet clients will look for with DNS.
+
+Set up Certificates
+
+    sudo puppet master --verbose --no-daemonize
+
+Press CTRL + C when it shows:
+
+    Notice: Starting Puppet master version 3.8.6
+
 
 
 #### Main Puppet Configuration File
