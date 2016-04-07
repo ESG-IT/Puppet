@@ -1,4 +1,5 @@
 # This is old information. Shall update to Puppet 4.4
+[Link to guide for Puppet 4.4](https://docs.puppet.com/puppet/4.4/reference/)
 #### Puppet Setup
 
 > This is to set up a machine on Red Hat Enterprise Linux 7.1
