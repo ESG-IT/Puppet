@@ -1,18 +1,63 @@
-# This is old information. Shall update to Puppet 4.4
+# Puppet Setup
 [Link to guide for Puppet 4.4](https://docs.puppet.com/puppet/4.4/reference/)
-#### Puppet Setup
-
 > This is to set up a machine on Red Hat Enterprise Linux 7.1
+
+## Set the time to NTP
+    sudo yum install -y ntp && grep ^server /etc/ntp.conf && sudo systemctl enable ntpd && sudo systemctl start ntpd && ntpq -p
+
+## Change the Firewall settings to allow Puppet
+
+    - Remove the old firewall and set up IPTables
+      sudo yum remove firewalld && sudo yum install iptables-services
+
+    - Open iptables configuration
+      sudo nano /etc/sysconfig/iptables
+
+    - Allow puppet in IPTables, write at the bottom
+      -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+
+## Install Puppet Server
+  - Enable the repo:
+    sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+
+  - Stop Puppetmaster if it is running
+    service puppetmaster stop
+
+  - Install Puppetserver
+    yum install -y puppetserver
+
+  - Start Puppetserver
+    systemctl start puppetserver
+
+
+
+
+
+
+
+
+
+
+# Old
 
 ## Preparation for Install
 [Link to guide](https://elatov.github.io/2014/08/setting-up-puppet-master-on-centos-7/)
 
 
 ### Run these commands from the Terminal
+
+  - Remove the old firewall and set up IPTables
     sudo yum remove firewalld && sudo yum install iptables-services
 This removes the default firewall
 
+  - Open iptables configuration
+    sudo nano /etc/sysconfig/iptables
+
+  - Allow puppet in IPTables, write at the bottom
     -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+
+
+
 
 This allows Puppet Clients to Connect
 
