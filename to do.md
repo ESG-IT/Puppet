@@ -4,3 +4,4 @@
 - ~~ip to to 10.17~~
 - ~~let joakim know about the server~~
 - ~~Open port 8140, between 10 , 30 and 40 nets~~
+- # IP is now 10.18  pointer also to be moved.
