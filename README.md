@@ -7,26 +7,26 @@
 
 ## Change the Firewall settings to allow Puppet
 
-    - Remove the old firewall and set up IPTables
+- Remove the old firewall and set up IPTables
       sudo yum remove firewalld && sudo yum install iptables-services
 
-    - Open iptables configuration
-      sudo nano /etc/sysconfig/iptables
+- Open iptables configuration
+    sudo nano /etc/sysconfig/iptables
 
-    - Allow puppet in IPTables, write at the bottom
+- Allow puppet in IPTables, write at the bottom
       -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
 
 ## Install Puppet Server
-  - Enable the repo:
+- Enable the repo:
     sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
-  - Stop Puppetmaster if it is running
+- Stop Puppetmaster if it is running
     service puppetmaster stop
 
-  - Install Puppetserver
+- Install Puppetserver
     yum install -y puppetserver
 
-  - Start Puppetserver
+- Start Puppetserver
     systemctl start puppetserver
 
 
