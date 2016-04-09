@@ -5,36 +5,45 @@
 ## Set the time to NTP
     sudo yum install -y ntp && grep ^server /etc/ntp.conf && sudo systemctl enable ntpd && sudo systemctl start ntpd && ntpq -p
 
-## Change the Firewall settings to allow Puppet
+## Change firewall to allow Puppet connections
 
 - Remove the old firewall and set up IPTables
 
-    sudo yum remove firewalld && sudo yum install iptables-services
+    sudo yum remove -y firewalld && sudo yum install -y iptables-services
 
 - Open iptables configuration
-
     sudo nano /etc/sysconfig/iptables
 
-- Allow puppet in IPTables, write at the bottom
+- Allow puppet in IPTables, write at the bottom before COMMIT
 
     -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+
+- Press CTRL + X and then Y to save
+
+- Enable the settings
+
+    sudo systemctl enable iptables && sudo systemctl start iptables && sudo iptables -L -n -v | grep 8140
 
 ## Install Puppet Server
 - Enable the repo:
 
     sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
-- Stop Puppetmaster if it is running
-
-    service puppetmaster stop
-
 - Install Puppetserver
 
     yum install -y puppetserver
 
-- Start Puppetserver
+- Start Puppetserver at boot
 
-    systemctl start puppetserver
+    sudo systemctl enable puppetserver
+
+- Reboot machine
+
+## Install PuppetDB
+
+- In the terminal Type
+
+    sudo yum install -y puppetdb puppetdb-termini
 
 
 
