@@ -1,4 +1,7 @@
-# Puppet Setup
+# Puppet Setup on OS X
+Download Latest Puppet from [here](https://downloads.puppetlabs.com/mac/)
+
+# Puppet Setup on Server
 [Link to guide for The Foreman](http://theforeman.org/manuals/1.11/quickstart_guide.html)
 > This is to set up a machine on CentOS 7, Foreman sets up Puppet.
 
