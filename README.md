@@ -19,8 +19,9 @@ Download Latest Factor from [here](https://downloads.puppetlabs.com/mac/)
 - Open iptables configuration
     sudo nano /etc/sysconfig/iptables
 
-- Allow puppet in IPTables, write under the second entry
+- Allow Puppet and Foreman in IPTables, write under the second entry
 
+    -A INPUT -p tcp -m state --state NEW -m tcp --dport 443 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
     -A INPUT -p tcp -m state --state NEW -m tcp --dport 8140 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
 
 - Press CTRL + X and then Y to save
